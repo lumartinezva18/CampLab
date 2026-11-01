@@ -10,6 +10,15 @@ st.set_page_config(
     layout="wide"
 )
 
+# NAVEGACIÓ PRINCIPAL
+
+tab1, tab2, tab3, tab4 = st.tabs([
+    "⌂  Dashboard",
+    "⚙  Simulació",
+    "◎  Visualització",
+    "▥  Anàlisi"
+])
+
 # CONSTANTS FÍSIQUES
 e = 1.602176634e-19
 m_e = 9.1093837139e-31
