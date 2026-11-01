@@ -249,12 +249,7 @@ with tab2:
 
     
     st.divider()
-    executar = st.button(
-        "Executar simulació",
-        type="primary",
-        use_container_width=True
-    )
-
+   
     col3, col4 = st.columns(2)
 
     with col3:
@@ -273,6 +268,12 @@ with tab2:
             value=5000,
             step=500
         )
+     executar = st.button(
+        "Executar simulació",
+        type="primary",
+        use_container_width=True
+    )
+
 
     if tipus == "Camp elèctric":
         E = intensitat_E
