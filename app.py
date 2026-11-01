@@ -278,13 +278,7 @@ with tab2:
         E = intensitat_E
         B = intensitat_B
 
-    st.divider()
-
-    executar = st.button(
-        "Executar simulació",
-        type="primary",
-        use_container_width=True
-    )
+    
 
     if executar:
         t, x, y, energia = simular_particula(
