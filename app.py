@@ -7,11 +7,9 @@ import matplotlib.pyplot as plt
 st.set_page_config(
     page_title="CAMPLAB",
     page_icon="⚛️",
-    layout="wide"
-)
+    layout="wide")
 
 # NAVEGACIÓ PRINCIPAL
-
 tab1, tab2, tab3, tab4 = st.tabs([
     "⌂  Dashboard",
     "⚙  Simulació",
@@ -29,8 +27,6 @@ particules = {
     "Positró": {"q": e, "m": m_e}}
 
 # ESTIL
-# IDENTITAT VISUAL CAMPLAB
-
 st.markdown("""
 <style>
 /* FONS */
@@ -147,24 +143,6 @@ def simular_particula(nom, v0, E, B, T, N):
 st.title("CAMPLAB")
 st.caption("LABORATORI VIRTUAL DE PARTÍCULES I CAMPS ELECTROMAGNÈTICS")
 st.markdown("---")
-
-
-
-
-
-
-# SELECCIÓ DEL CAMP
-if tipus == "Camp elèctric":
-    E = intensitat_E
-    B = 0
-
-elif tipus == "Camp magnètic":
-    E = 0
-    B = intensitat_B
-
-else:
-    E = intensitat_E
-    B = intensitat_B
 
 # SIMULACIÓ
 st.subheader("Simulació de trajectòries")
