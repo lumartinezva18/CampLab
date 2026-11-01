@@ -262,3 +262,140 @@ if st.button("Executar simulació", type="primary"):
     ax2.grid(True)
 
     st.pyplot(fig2)
+
+
+# DASHBOARD
+
+with tab1:
+    st.title("CAMPLAB")
+    st.subheader("Computational Analysis of Motion and Particle Laboratory")
+
+    st.markdown("""
+    ### Laboratori virtual de física de partícules
+
+    CAMPLAB és una aplicació interactiva que permet estudiar
+    el moviment de partícules carregades sotmeses a camps
+    elèctrics i magnètics.
+
+    **Objectius del laboratori:**
+    - Simular trajectòries de diferents partícules.
+    - Comparar el comportament del protó, l'electró i el positró.
+    - Analitzar la influència dels camps electromagnètics.
+    - Estudiar els canvis en l'energia cinètica.
+    """)
+
+    st.divider()
+
+    st.caption("CAMPLAB · Simulació computacional de física")
+
+# PESTANYA DE SIMULACIÓ
+
+with tab2:
+    st.title("Simulació de partícules")
+    st.markdown(
+        "Configura les condicions inicials i observa el moviment "
+        "de les partícules carregades."
+    )
+
+    st.divider()
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("Partícula")
+        nom = st.selectbox(
+            "Selecciona la partícula",
+            ["Protó", "Electró", "Positró"]
+        )
+
+        v0 = st.number_input(
+            "Velocitat inicial (m/s)",
+            min_value=0.0,
+            value=1000000.0,
+            step=100000.0
+        )
+
+    with col2:
+        st.subheader("Camp electromagnètic")
+        tipus = st.selectbox(
+            "Tipus de camp",
+            ["Camp elèctric", "Camp magnètic", "Camps combinats"]
+        )
+
+        intensitat_E = st.number_input(
+            "Intensitat del camp elèctric (N/C)",
+            min_value=0.0,
+            value=1000.0
+        )
+
+        intensitat_B = st.number_input(
+            "Intensitat del camp magnètic (T)",
+            min_value=0.0,
+            value=0.001,
+            format="%.6f"
+        )
+
+    st.divider()
+
+    col3, col4 = st.columns(2)
+
+    with col3:
+        T = st.number_input(
+            "Temps de simulació (s)",
+            min_value=0.000000001,
+            value=0.0000005,
+            format="%.8e"
+        )
+
+    with col4:
+        N = st.number_input(
+            "Nombre de passos temporals",
+            min_value=100,
+            max_value=20000,
+            value=5000,
+            step=500
+        )
+
+    if tipus == "Camp elèctric":
+        E = intensitat_E
+        B = 0.0
+    elif tipus == "Camp magnètic":
+        E = 0.0
+        B = intensitat_B
+    else:
+        E = intensitat_E
+        B = intensitat_B
+
+    st.divider()
+
+    executar = st.button(
+        "Executar simulació",
+        type="primary",
+        use_container_width=True
+    )
+
+    if executar:
+        t, x, y, energia = simular_particula(
+            nom, v0, E, B, T, int(N)
+        )
+
+        st.success("Simulació completada!")
+
+        fig, ax = plt.subplots(figsize=(9, 5))
+        ax.plot(x, y, label=nom, linewidth=2)
+        ax.set_xlabel("Posició X (m)")
+        ax.set_ylabel("Posició Y (m)")
+        ax.set_title("Trajectòria de la partícula")
+        ax.grid(True, alpha=0.3)
+        ax.legend()
+        st.pyplot(fig)
+        plt.close(fig)
+
+        fig, ax = plt.subplots(figsize=(9, 4))
+        ax.plot(t, energia, linewidth=2)
+        ax.set_xlabel("Temps (s)")
+        ax.set_ylabel("Energia cinètica (J)")
+        ax.set_title("Evolució de l'energia cinètica")
+        ax.grid(True, alpha=0.3)
+        st.pyplot(fig)
+        plt.close(fig)
