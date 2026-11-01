@@ -14,19 +14,19 @@ st.set_page_config(
 st.markdown("""
 <style>
 .stApp {
-    background-color: #101D2B;
+    background-color: #0e1290;
 }
 h1 {
     color: #42D9F5;
 }
 h2, h3 {
-    color: #FFFFFF;
+    color: #F6FCFD;
 }
 p, label {
-    color: #C4D5E3;
+    color: #ade4f0;
 }
 [data-testid="stSidebar"] {
-    background-color: #172A3B;
+    background-color: #142c70;
 }
 </style>
 """, unsafe_allow_html=True)
