@@ -247,7 +247,13 @@ with tab2:
             format="%.6f"
         )
 
+    
     st.divider()
+    executar = st.button(
+        "Executar simulació",
+        type="primary",
+        use_container_width=True
+    )
 
     col3, col4 = st.columns(2)
 
