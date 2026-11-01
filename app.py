@@ -48,9 +48,11 @@ particula = st.sidebar.selectbox(
 tipus_camp = st.sidebar.selectbox(
     "Tipus de camp",
     [
-        "Camp elèctric",
-        "Camp magnètic",
-        "Camps electromagnètics"
+        "Camp elèctric uniforme",
+        "Camp elèctric no uniforme",
+        "Camp magnètic uniforme",
+        "Camp magnètic no uniforme",
+        "Camp electromagnètic"
     ]
 )
 
@@ -71,7 +73,7 @@ st.subheader("Laboratori de simulació")
 
 st.write(
     "Configura les propietats de les partícules "
-    "i els camps electromagnètics per estudiar-ne "
+    "i els camps per estudiar-ne "
     "el moviment."
 )
 
