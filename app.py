@@ -11,7 +11,7 @@ st.set_page_config(
 
 # NAVEGACIÓ PRINCIPAL
 tab1, tab2, tab3, tab4 = st.tabs([
-    "⌂  Dashboard",
+    "⌂  Pàgina inicial",
     "⚙  Simulació",
     "◎  Visualització",
     "▥  Anàlisi"
@@ -139,11 +139,6 @@ def simular_particula(nom, v0, E, B, T, N):
 
     return t, x, y, energia
     
-# CAPÇALERA
-st.title("CAMPLAB")
-st.caption("LABORATORI VIRTUAL DE PARTÍCULES I CAMPS ELECTROMAGNÈTICS")
-st.markdown("---")
-
 # SIMULACIÓ
 st.subheader("Simulació de trajectòries")
 
