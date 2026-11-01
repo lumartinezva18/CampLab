@@ -140,7 +140,7 @@ def simular_particula(nom, v0, E, B, T, N):
     return t, x, y, energia
     
 # SIMULACIÓ
-st.subheader("Simulació de trajectòries")
+
 
 if st.button("Executar simulació", type="primary"):
 
@@ -193,12 +193,12 @@ with tab1:
     - Simular trajectòries de diferents partícules.
     - Comparar el comportament del protó, l'electró i el positró.
     - Analitzar la influència dels camps electromagnètics.
-    - Estudiar els canvis en l'energia cinètica.
+    - Estudiar els canvis d'energia cinètica.
     """)
 
     st.divider()
 
-    st.caption("CAMPLAB · Simulació computacional de física")
+    st.caption("CAMPLAB · Simulació computacional física")
 
 # PESTANYA DE SIMULACIÓ
 
