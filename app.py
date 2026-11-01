@@ -23,53 +23,37 @@ tab1, tab2, tab3, tab4 = st.tabs([
 e = 1.602176634e-19
 m_e = 9.1093837139e-31
 m_p = 1.67262192595e-27
-
 particules = {
     "Protó": {"q": e, "m": m_p},
     "Electró": {"q": -e, "m": m_e},
-    "Positró": {"q": e, "m": m_e}
-}
+    "Positró": {"q": e, "m": m_e}}
 
 # ESTIL
-
 # IDENTITAT VISUAL CAMPLAB
 
 st.markdown("""
 <style>
-
 /* FONS */
 .stApp {
     background: #0D1723;
     color: #E7EDF4;
 }
-
 .block-container {
     max-width: 1450px;
     padding-top: 5rem;
     padding-bottom: 3rem;
 }
-
 /* TIPOGRAFIA */
 h1 {
     color: #55C5DF !important;
     font-size: 2.8rem !important;
     font-weight: 750 !important;
-    letter-spacing: 2px;
-}
-
+    letter-spacing: 2px;}
 h2, h3 {
     color: #EAF1F7 !important;
-    font-weight: 600 !important;
-}
-
+    font-weight: 600 !important;}
 p, label {
     color: #AEBECD;
-}
-
-/* BARRA LATERAL */
-[data-testid="stSidebar"] {
-    background: #111E2C;
-    border-right: 1px solid #26394A;
 }
 
 /* TARGETES */
@@ -79,11 +63,9 @@ p, label {
     border-radius: 12px;
     padding: 20px;
 }
-
 [data-testid="stMetricValue"] {
     color: #55C5DF !important;
 }
-
 [data-testid="stMetricLabel"] {
     color: #AEBECD !important;
 }
@@ -118,12 +100,10 @@ p, label {
 [data-testid="stVegaLiteChart"] {
     border-radius: 12px;
 }
-
 /* SEPARADORS */
 hr {
     border-color: #293E50;
 }
-
 /* MISSATGES */
 [data-testid="stAlert"] {
     background: #172635;
@@ -139,10 +119,9 @@ hr {
 def simular_particula(nom, v0, E, B, T, N):
     q = particules[nom]["q"]
     m = particules[nom]["m"]
-
     t = np.linspace(0, T, N)
     dt = t[1] - t[0]
-
+    
     estat = np.zeros((N, 4))
     estat[0] = [0, 0, v0, 0]
 
@@ -151,68 +130,28 @@ def simular_particula(nom, v0, E, B, T, N):
         ax = (q/m) * (E + vy*B)
         ay = (q/m) * (-vx*B)
         return np.array([vx, vy, ax, ay])
-
     for i in range(N-1):
         s = estat[i]
-
         k1 = derivada(s)
         k2 = derivada(s + dt*k1/2)
         k3 = derivada(s + dt*k2/2)
         k4 = derivada(s + dt*k3)
 
         estat[i+1] = s + dt*(k1 + 2*k2 + 2*k3 + k4)/6
-
     x, y, vx, vy = estat.T
     energia = 0.5*m*(vx**2 + vy**2)
 
     return t, x, y, energia
-
+    
 # CAPÇALERA
 st.title("CAMPLAB")
 st.caption("LABORATORI VIRTUAL DE PARTÍCULES I CAMPS ELECTROMAGNÈTICS")
 st.markdown("---")
 
-# CONTROLS
-st.sidebar.title("Configuració de l'experiment")
 
-nom = st.sidebar.selectbox(
-    "Partícula",
-    list(particules.keys())
-)
 
-tipus = st.sidebar.selectbox(
-    "Tipus de camp",
-    ["Camp elèctric", "Camp magnètic", "Camps combinats"]
-)
 
-intensitat_E = st.sidebar.number_input(
-    "Camp elèctric (N/C)",
-    min_value=0.0,
-    value=1000.0,
-    step=100.0
-)
 
-intensitat_B = st.sidebar.number_input(
-    "Camp magnètic (T)",
-    min_value=0.0,
-    value=0.001,
-    format="%.5f"
-)
-
-v0 = st.sidebar.number_input(
-    "Velocitat inicial (m/s)",
-    min_value=1000,
-    max_value=10000000,
-    value=1000000
-)
-
-T = st.sidebar.number_input(
-    "Temps de simulació (s)",
-    min_value=1e-10,
-    max_value=1e-6,
-    value=1e-8,
-    format="%.2e"
-)
 
 # SELECCIÓ DEL CAMP
 if tipus == "Camp elèctric":
