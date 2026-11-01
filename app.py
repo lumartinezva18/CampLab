@@ -22,15 +22,109 @@ particules = {
 }
 
 # ESTIL
+
+# IDENTITAT VISUAL CAMPLAB
+
 st.markdown("""
 <style>
-.stApp {background-color: #101D2B;}
-h1 {color: #42D9F5;}
-h2, h3 {color: white;}
-p, label {color: #C4D5E3;}
-[data-testid="stSidebar"] {background-color: #172A3B;}
+
+/* FONS */
+.stApp {
+    background: #0D1723;
+    color: #E7EDF4;
+}
+
+.block-container {
+    max-width: 1450px;
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+}
+
+/* TIPOGRAFIA */
+h1 {
+    color: #55C5DF !important;
+    font-size: 2.8rem !important;
+    font-weight: 750 !important;
+    letter-spacing: 2px;
+}
+
+h2, h3 {
+    color: #EAF1F7 !important;
+    font-weight: 600 !important;
+}
+
+p, label {
+    color: #AEBECD;
+}
+
+/* BARRA LATERAL */
+[data-testid="stSidebar"] {
+    background: #111E2C;
+    border-right: 1px solid #26394A;
+}
+
+/* TARGETES */
+[data-testid="stMetric"] {
+    background: #172635;
+    border: 1px solid #293E50;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+[data-testid="stMetricValue"] {
+    color: #55C5DF !important;
+}
+
+[data-testid="stMetricLabel"] {
+    color: #AEBECD !important;
+}
+
+/* BOTONS */
+.stButton > button {
+    background: #167F9B;
+    color: white;
+    border: 1px solid #249BB8;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.65rem 1.2rem;
+    transition: 0.2s;
+}
+
+.stButton > button:hover {
+    background: #239BB8;
+    border-color: #55C5DF;
+    color: white;
+}
+
+/* SELECTORS */
+.stSelectbox > div > div,
+.stNumberInput > div > div {
+    background: #172635;
+    border-radius: 8px;
+}
+
+/* GRAFICS */
+[data-testid="stImage"],
+[data-testid="stPlotlyChart"],
+[data-testid="stVegaLiteChart"] {
+    border-radius: 12px;
+}
+
+/* SEPARADORS */
+hr {
+    border-color: #293E50;
+}
+
+/* MISSATGES */
+[data-testid="stAlert"] {
+    background: #172635;
+    border: 1px solid #293E50;
+    border-radius: 10px;
+}
+
 </style>
 """, unsafe_allow_html=True)
+
 
 # MOTOR DE SIMULACIÓ
 def simular_particula(nom, v0, E, B, T, N):
