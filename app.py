@@ -151,7 +151,7 @@ with tab2:
 
     with col1:
 
-        st.subheader("PARTICULA")
+        st.subheader("PARTÍCULA")
 
         nom = st.selectbox(
             "Selecciona la partícula",
