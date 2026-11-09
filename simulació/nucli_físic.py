@@ -1,8 +1,8 @@
 
 import numpy as np
 
-from simulation.particles import particules
-from simulation.numerical_methods import rk4
+from simulació.partícules import particules
+from simulació.mètode_numèric import rk4
 
 
 def simular_3d(nom, v0, E, B, T, N):
