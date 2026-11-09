@@ -101,7 +101,7 @@ def animacio_3d(resultat):
         height=680,
 
         title=dict(
-            text="3D PARTICLE TRAJECTORY",
+            text="TRAJECTÒRIA 3D DE LA PARTÍCULA",
             font=dict(
                 color="#55C5DF",
                 size=20
@@ -164,7 +164,7 @@ def animacio_3d(resultat):
                 ),
 
                 dict(
-                    label="Ⅱ PAUSE",
+                    label="Ⅱ PAUSA",
                     method="animate",
                     args=[
                         [None],
