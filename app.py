@@ -132,7 +132,7 @@ with tab1:
 
     st.divider()
 
-    st.caption("CAMPLAB · Laboratori virtual de física")
+    st.caption("CAMPLAB · Virtual LAB")
 
 
 # =====================================================
