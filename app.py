@@ -4,7 +4,7 @@ import numpy as np
 
 from simulació.nucli_físic import simular_3d
 
-from visualització.3d import animacio_3d
+from visualització.animació_3d import animacio_3d
 
 from visualització.gràfiques import (
     crear_grafica,
