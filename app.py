@@ -11,6 +11,9 @@ from visualització.gràfiques import (
     crear_projeccions
 )
 
+from simulació.partícules import particules
+from simulació.mètode_numèric import rk4
+
 
 # =====================================================
 # 1. CONFIGURACIÓ
