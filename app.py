@@ -2,11 +2,11 @@
 import streamlit as st
 import numpy as np
 
-from simulation.physics import simular_3d
+from simulació.nucli_físic import simular_3d
 
-from visualization.animation_3d import animacio_3d
+from visualització.3d import animacio_3d
 
-from visualization.graphs import (
+from visualització.gràfiques import (
     crear_grafica,
     crear_projeccions
 )
