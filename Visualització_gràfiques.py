@@ -41,44 +41,50 @@ def crear_grafica(t, valores, titol, eix_y):
     return fig
 
 
+
+from plotly.subplots import make_subplots
+
+
 def crear_projeccions(resultat):
 
-    fig = go.Figure()
+    fig = make_subplots(
+        rows=1,
+        cols=3,
+        subplot_titles=("PLÀ XY", "PLÀ XZ", "PLÀ YZ")
+    )
 
-    fig.add_trace(go.Scatter(
-        x=resultat["x"],
-        y=resultat["y"],
-        mode="lines",
-        name="XY"
-    ))
+    plans = [
+        (resultat["x"], resultat["y"], 1),
+        (resultat["x"], resultat["z"], 2),
+        (resultat["y"], resultat["z"], 3)
+    ]
 
-    fig.add_trace(go.Scatter(
-        x=resultat["x"],
-        y=resultat["z"],
-        mode="lines",
-        name="XZ"
-    ))
+    for x, y, columna in plans:
 
-    fig.add_trace(go.Scatter(
-        x=resultat["y"],
-        y=resultat["z"],
-        mode="lines",
-        name="YZ"
-    ))
+        fig.add_trace(
+            go.Scatter(
+                x=x,
+                y=y,
+                mode="lines",
+                line=dict(
+                    color="#55C5DF",
+                    width=2
+                ),
+                showlegend=False
+            ),
+            row=1,
+            col=columna
+        )
 
     fig.update_layout(
-
         template="plotly_dark",
-
         paper_bgcolor="#0D1723",
         plot_bgcolor="#172635",
-
-        title="Projeccions de la trajectòria",
-
-        xaxis_title="Posició (m)",
-        yaxis_title="Posició (m)",
-
-        height=450
+        height=430,
+        title="Projeccions bidimensionals de la trajectòria"
     )
 
     return fig
+
+
+    
