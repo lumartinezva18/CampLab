@@ -112,7 +112,7 @@ with tab1:
     st.title("CAMPLAB")
 
     st.subheader(
-        "Computational Analysis of Motion and Particle Laboratory"
+        "Darrere la trajectòria: explora l'invisible als ulls"
     )
 
     st.markdown("""
@@ -132,7 +132,7 @@ with tab1:
 
     st.divider()
 
-    st.caption("CAMPLAB · Computational Physics Laboratory")
+    st.caption("CAMPLAB · Laboratori virtual de física")
 
 
 # =====================================================
@@ -141,7 +141,7 @@ with tab1:
 
 with tab2:
 
-    st.title("SIMULATION LAB")
+    st.title("LABORATORI DE SIMULACIONS")
 
     st.caption(
         "Configura les condicions inicials de l'experiment."
@@ -151,14 +151,14 @@ with tab2:
 
     with col1:
 
-        st.subheader("PARTICLE")
+        st.subheader("PARTICULA")
 
         nom = st.selectbox(
             "Selecciona la partícula",
             ["Protó", "Electró", "Positró"]
         )
 
-        st.markdown("**Initial velocity components**")
+        st.markdown("**Components de la velocitat incial**")
 
         vx0 = st.number_input(
             "Vx (m/s)",
@@ -180,7 +180,7 @@ with tab2:
 
     with col2:
 
-        st.subheader("ELECTROMAGNETIC FIELD")
+        st.subheader("CAMP ELECTROMAGNÈTIC")
 
         tipus = st.selectbox(
             "Tipus de camp",
@@ -191,13 +191,13 @@ with tab2:
             ]
         )
 
-        st.markdown("**Electric field (N/C)**")
+        st.markdown("**Camp Elèctric (N/C)**")
 
         ex = st.number_input("Ex", value=1000.0)
         ey = st.number_input("Ey", value=0.0)
         ez = st.number_input("Ez", value=0.0)
 
-        st.markdown("**Magnetic field (T)**")
+        st.markdown("**Camp magnètic (T)**")
 
         bx = st.number_input("Bx", value=0.0)
         by = st.number_input("By", value=0.0)
@@ -214,7 +214,7 @@ with tab2:
     with col3:
 
         T = st.number_input(
-            "Simulation time (s)",
+            "Temps de simulació (s)",
             min_value=1e-12,
             value=5e-7,
             format="%.3e"
@@ -223,7 +223,7 @@ with tab2:
     with col4:
 
         N = st.number_input(
-            "Number of time steps",
+            "Número de passos temporals",
             min_value=100,
             max_value=20000,
             value=5000,
@@ -233,7 +233,7 @@ with tab2:
     st.divider()
 
     executar = st.button(
-        "▶ EXECUTE SIMULATION",
+        "▶ EXECUTAR",
         type="primary",
         use_container_width=True
     )
@@ -317,7 +317,7 @@ with tab2:
 
 with tab3:
 
-    st.title("3D VISUALIZATION")
+    st.title("VISUALITZACIÓ 3D")
 
     st.caption(
         "Representació tridimensional del moviment de la partícula."
@@ -361,7 +361,7 @@ with tab3:
 
 with tab4:
 
-    st.title("RESULTS ANALYSIS")
+    st.title("ANÀLISI DELS RESULTATS")
 
     if "resultat" in st.session_state:
 
@@ -371,12 +371,12 @@ with tab4:
 
         with col1:
 
-            st.subheader("Velocity vs time")
+            st.subheader("Velocitat en front de temps")
 
             fig = crear_grafica(
                 resultat["t"],
                 resultat["velocitat"],
-                "Velocity vs time",
+                "Velocitat/temps",
                 "Velocitat (m/s)"
             )
 
@@ -387,12 +387,12 @@ with tab4:
 
         with col2:
 
-            st.subheader("Kinetic energy vs time")
+            st.subheader("Energia cinètica en front de temps")
 
             fig = crear_grafica(
                 resultat["t"],
                 resultat["energia"],
-                "Kinetic energy vs time",
+                "Energia cinètica/temps",
                 "Energia (J)"
             )
 
@@ -401,12 +401,12 @@ with tab4:
                 use_container_width=True
             )
 
-        st.subheader("Acceleration vs time")
+        st.subheader("Acceleració en front de temps")
 
         fig = crear_grafica(
             resultat["t"],
             resultat["acceleracio"],
-            "Acceleration vs time",
+            "Acceleració/temps",
             "Acceleració (m/s²)"
         )
 
@@ -415,7 +415,7 @@ with tab4:
             use_container_width=True
         )
 
-        st.subheader("Trajectory projections")
+        st.subheader("Projecció de la trajectòria")
 
         fig = crear_projeccions(resultat)
 
